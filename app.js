@@ -15,14 +15,13 @@ document.getElementById('whatsappForm').addEventListener('submit', function (e) 
     const notification = document.getElementById('notification');
     const sendButton = document.getElementById('sendButton');
 
-    // Validación menos estricta (solo verifica que empiece con "+" y tenga números)
-if (!/^\+\d{10,15}$/.test(numero)) {
-    notification.classList.remove('hidden');
-    notification.classList.add('error');
-    notification.innerText = "Por favor, ingresa un número de WhatsApp válido con el código de país.";
-    return;
-}
-
+    // Validar el número de WhatsApp
+    if (!/^\+[1-9]\d{1,14}$/.test(numero)) {
+        notification.classList.remove('hidden');
+        notification.classList.add('error');
+        notification.innerText = "Por favor, ingresa un número de WhatsApp válido con el código de país.";
+        return;
+    }
 
     // Deshabilitar el botón de envío para evitar múltiples clics
     sendButton.disabled = true;
