@@ -3,10 +3,11 @@ const bodyParser = require('body-parser');
 const twilio = require('twilio');
 
 // Credenciales de Twilio
-const accountSid = 'ACa3f6a9d8ea9cacc209aed3921d40326e'; // Reemplaza con tu Account SID
-const authToken = '[AuthToken]'; // Reemplaza con tu Auth Token
+const accountSid = process.env.TWILIO_ACCOUNT_SID; // Utiliza variables de entorno para las credenciales
+const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = twilio(accountSid, authToken);
 
+// Inicializar el servidor
 const app = express();
 app.use(bodyParser.json());
 
@@ -16,18 +17,18 @@ app.post('/send-whatsapp', (req, res) => {
     client.messages
         .create({
             from: 'whatsapp:+14155238886', // WhatsApp Sandbox de Twilio
-            contentSid: contentSid, // El Content SID de tu plantilla en Twilio
-            contentVariables: JSON.stringify(contentVariables), // Variables dinámicas para la plantilla
-            to: `whatsapp:${numero}` // Número de WhatsApp del destinatario
+            contentSid: contentSid,
+            contentVariables: JSON.stringify(contentVariables),
+            to: `whatsapp:${numero}`
         })
         .then(message => {
             res.json({ message: 'Mensaje enviado exitosamente', sid: message.sid });
         })
         .catch(err => {
-            res.status(500).json({ error: 'Error al enviar el mensaje', details: err });
+            console.error('Error al enviar mensaje:', err);
+            res.status(500).json({ error: 'Error al enviar el mensaje', details: err.message });
         });
 });
 
-app.listen(3000, () => {
-    console.log('Servidor corriendo en el puerto 3000');
-});
+// Exportar para que funcione en Vercel
+module.exports = app
