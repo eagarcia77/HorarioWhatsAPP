@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar Horarios por WhatsApp</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Enviar Horarios a WhatsApp</h1>
+        <p>Ingresa la información del empleado y envía el horario directamente a su WhatsApp.</p>
+    </header>
+
+    <main>
+        <section class="form-container">
+            <form id="whatsappForm">
+                <label for="nombre">Nombre del Empleado:</label>
+                <input type="text" id="nombre" required>
+
+                <label for="numero">Número de WhatsApp (con código de país):</label>
+                <input type="text" id="numero" required>
+
+                <label for="lunes">Lunes:</label>
+                <input type="text" id="lunes" placeholder="Ej: 9am-5pm" required>
+
+                <label for="martes">Martes:</label>
+                <input type="text" id="martes" placeholder="Ej: 9am-5pm" required>
+
+                <label for="miercoles">Miércoles:</label>
+                <input type="text" id="miercoles" placeholder="Ej: 9am-5pm" required>
+
+                <label for="jueves">Jueves:</label>
+                <input type="text" id="jueves" placeholder="Ej: 9am-5pm" required>
+
+                <label for="viernes">Viernes:</label>
+                <input type="text" id="viernes" placeholder="Ej: 9am-5pm" required>
+
+                <label for="sabado">Sábado:</label>
+                <input type="text" id="sabado" placeholder="Ej: Libre" required>
+
+                <label for="domingo">Domingo:</label>
+                <input type="text" id="domingo" placeholder="Ej: Libre" required>
+
+                <button type="submit" id="sendButton">Enviar a WhatsApp</button>
+            </form>
+
+            <div id="statusMessage" class="hidden">
+                <p>Procesando...</p>
+            </div>
+
+            <div id="notification" class="hidden"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Envío de Horarios. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
