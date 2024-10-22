@@ -4,7 +4,7 @@ const twilio = require('twilio');
 
 // Credenciales de Twilio
 const accountSid = 'ACa3f6a9d8ea9cacc209aed3921d40326e'; // Reemplaza con tu Account SID
-const authToken = '4d0fee0b090ab0113c0a5cc409be0e3a'; // Reemplaza con tu Auth Token
+const authToken = '2b0a4cc90e3d9bce6e7712962a711d45'; // Reemplaza con tu Auth Token
 const client = twilio(accountSid, authToken);
 
 const app = express();
@@ -15,7 +15,7 @@ app.post('/send-whatsapp', (req, res) => {
 
     client.messages
         .create({
-            from: 'whatsapp:+14155238886', // WhatsApp Sandbox de Twilio
+            from: 'whatsapp:+18506596883', // WhatsApp Sandbox de Twilio
             contentSid: contentSid, // El Content SID de tu plantilla en Twilio
             contentVariables: JSON.stringify(contentVariables), // Variables dinámicas para la plantilla
             to: `whatsapp:${numero}` // Número de WhatsApp del destinatario
