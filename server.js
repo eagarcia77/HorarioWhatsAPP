@@ -19,7 +19,7 @@ app.post('/send-whatsapp', (req, res) => {
             from: 'whatsapp:+14155238886', // WhatsApp Sandbox de Twilio
             contentSid: contentSid,
             contentVariables: JSON.stringify(contentVariables),
-            to: `whatsapp:${numero}`
+            to: `whatsapp:+17879003257`
         })
         .then(message => {
             res.json({ message: 'Mensaje enviado exitosamente', sid: message.sid });
