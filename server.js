@@ -15,7 +15,7 @@ app.post('/send-whatsapp', (req, res) => {
 
     client.messages
         .create({
-            from: 'whatsapp:+18506596883', // WhatsApp Sandbox de Twilio
+            from: 'whatsapp:+14155238886', // WhatsApp Sandbox de Twilio
             contentSid: contentSid, // El Content SID de tu plantilla en Twilio
             contentVariables: JSON.stringify(contentVariables), // Variables dinámicas para la plantilla
             to: `whatsapp:${numero}` // Número de WhatsApp del destinatario
